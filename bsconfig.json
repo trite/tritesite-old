@@ -17,6 +17,9 @@
     "relude",
     "@rescript/react"
   ],
+  "bsc-flags": [
+    "-open Relude.Globals"
+  ],
   "warnings": {
     "error": "+101"
   }
