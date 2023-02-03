@@ -13,6 +13,8 @@
     "react-jsx": 3
   },
   "bs-dependencies": [
+    "bs-bastet",
+    "relude",
     "@rescript/react"
   ],
   "warnings": {
