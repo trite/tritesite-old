@@ -1,20 +1,28 @@
+[@bs.module "marked"] external parse: string => string = "parse";
+
 module App = {
-  // This sample forces an import of Belt.*, so that CI builds can ensure that
-  // Melange has been installed correctly for JS bundlers to be able to find it.
+  let getValue = e => e->ReactEvent.Form.target##value;
+
   [@react.component]
-  let make = () =>
-    ["Hello world!", "This is React!"]
-    ->Belt.List.map(greeting => <h1> greeting->React.string </h1>)
-    ->Belt.List.toArray
-    ->React.array;
+  let make = () => {
+    let (output, setOutput) = React.useState(() => "");
+
+    let doParse = e => {
+      setOutput(_ => e |> getValue |> parse);
+    };
+
+    <div>
+      <textarea onChange=doParse />
+      <br />
+      <div dangerouslySetInnerHTML={"__html": output} />
+    </div>;
+  };
 };
 
 ReactDOM.querySelector("#root")
-->(
-    fun
-    | Some(root) => ReactDOM.render(<App />, root)
-    | None =>
-      Js.Console.error(
-        "Failed to start React: couldn't find the #root element",
-      )
-  );
+|> (
+  fun
+  | Some(root) => ReactDOM.render(<App />, root)
+  | None =>
+    Js.Console.error("Failed to start React: couldn't find the #root element")
+);
