@@ -4,12 +4,14 @@
     "serve": "webpack serve --open --mode development --entry ./_build/default/src/ReactApp.bs.js"
   },
   "dependencies": {
-    "@rescript/react": "^0.10.3",
     "bs-bastet": "^2.0.0",
+    "bs-fetch": "^0.6.2",
+    "dompurify": "^2.4.3",
     "marked": "^4.2.12",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "relude": "^0.66.1"
+    "relude": "^0.66.1",
+    "@rescript/react": "^0.10.3"
   },
   "devDependencies": {
     "webpack": "^5.73.0",

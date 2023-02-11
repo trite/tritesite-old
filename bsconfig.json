@@ -1,24 +1,29 @@
 {
-  "$schema": "https://raw.githubusercontent.com/rescript-lang/rescript-compiler/master/docs/docson/build-schema.json",
-  "name": "melange-basic-project",
+  "name": "tritesite",
   "version": "0.0.1",
+  "namespace": true,
+  "package-specs": {
+    "module": "commonjs"
+  },
+  "reason": {
+    "react-jsx": 3
+  },
   "sources": {
     "dir": "src",
     "subdirs": true
   },
-  "package-specs": {
-    "module": "commonjs"
-  },
   "suffix": ".bs.js",
-  "reason": {
-    "react-jsx": 3
+  "warnings": {
+    "error": "+101"
   },
   "bs-dependencies": [
     "bs-bastet",
+    "bs-fetch",
     "relude",
     "@rescript/react"
   ],
-  "warnings": {
-    "error": "+101"
-  }
+  "bsc-flags": [
+    "-open Relude.Globals",
+    "-bs-super-errors"
+  ]
 }
