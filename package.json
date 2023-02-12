@@ -11,6 +11,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "relude": "^0.66.1",
+    "relude-fetch": "trite/relude-fetch#update-for-melange",
     "@rescript/react": "^0.10.3"
   },
   "devDependencies": {

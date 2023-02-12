@@ -20,6 +20,7 @@
     "bs-bastet",
     "bs-fetch",
     "relude",
+    "relude-fetch",
     "@rescript/react"
   ],
   "bsc-flags": [
