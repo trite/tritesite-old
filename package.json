@@ -5,6 +5,9 @@
   },
   "dependencies": {
     "bs-bastet": "^2.0.0",
+    "bs-css": "^16.0.0",
+    "bs-css-emotion": "^5.0.0",
+    "bs-decode": "trite/bs-decode#version-bumps-melange",
     "bs-fetch": "^0.6.2",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",

@@ -4,6 +4,15 @@
 
 let contentRoot = "https://api.github.com/repos/trite/trite.io-content/contents/";
 
+let makeUri = path => contentRoot ++ path;
+
+let defaultRawMarkdown = {|# header
+## subheader
+Text **bold** *italic*
+* list
+* of
+* things|};
+
 module ContentFetch = {
   module Error = {
     type t = ReludeFetch.Error.t(string);
@@ -20,10 +29,23 @@ module ContentFetch = {
     ReludeFetch.fetch(uri) >>= ReludeFetch.Response.text;
 };
 
+module S = {
+  [@react.component]
+  let make = (~children) => children |> React.string;
+};
+
+module Styles = {
+  open Css;
+
+  let wideTextInput = style([width(pct(50.0))]);
+
+  let wideTextArea = style([width(pct(50.0)), height(px(150))]);
+};
+
 module App = {
   let getValue = e => e->ReactEvent.Form.target##value;
 
-  let parse = (setter, event) =>
+  let parseAndSet = (setter, event) =>
     event |> getValue |> parse |> sanitize |> (x => setter(_ => x));
 
   let fetch = (setter, uri, _event) =>
@@ -37,19 +59,51 @@ module App = {
   [@react.component]
   let make = () => {
     let (parsedMarkdown, setParsedMarkdown) = React.useState(() => "");
+
     let (fetched, setFetched) = React.useState(() => "");
 
+    let (specificFetch, setSpecificFetch) =
+      React.useState(() => "posts/2022/2022-01-18_python-type-checking.md");
+
+    let (specificFetchResult, setSpecificFetchResult) =
+      React.useState(() => "");
+
     <div>
-      <textarea onChange={parse(setParsedMarkdown)} />
+      <label> <S> "Markdown parse test: " </S> </label>
+      <textarea
+        onChange={parseAndSet(setParsedMarkdown)}
+        className=Styles.wideTextArea
+      />
       <br />
       <div dangerouslySetInnerHTML={"__html": parsedMarkdown} />
       <br />
       <hr />
       <br />
-      <textarea value=fetched />
+      <label> <S> "Specific fetch test: " </S> </label>
+      <input
+        type_="text"
+        value=specificFetch
+        onChange={getValue >> setSpecificFetch}
+        className=Styles.wideTextInput
+      />
+      <br />
+      <textarea className=Styles.wideTextArea />
       <input
         type_="button"
-        value="clicky"
+        value="go forth and fetch the thing"
+        onClick={specificFetch |> makeUri |> fetch(setSpecificFetchResult)}
+      />
+      <br />
+      <S> specificFetchResult </S>
+      // <input type_="button" value="fetch & parse" onClick={}
+      <br />
+      <hr />
+      <br />
+      <label> <S> "Fetch test: " </S> </label>
+      <textarea value=fetched className=Styles.wideTextArea />
+      <input
+        type_="button"
+        value="dooo it"
         onClick={fetch(setFetched, contentRoot)}
       />
     </div>;

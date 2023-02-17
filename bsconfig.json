@@ -18,6 +18,9 @@
   },
   "bs-dependencies": [
     "bs-bastet",
+    "bs-css",
+    "bs-css-emotion",
+    "bs-decode",
     "bs-fetch",
     "relude",
     "relude-fetch",
