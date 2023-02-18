@@ -42,19 +42,153 @@ module Styles = {
   let wideTextArea = style([width(pct(50.0)), height(px(150))]);
 };
 
+type links = {
+  self: string,
+  git: string,
+  html: string,
+};
+
+type githubApiResponse = {
+  name: string,
+  path: string,
+  sha: string,
+  size: int,
+  url: string,
+  html_url: string,
+  git_url: string,
+  download_url: string,
+  type_: string,
+  content: string,
+  encoding: string,
+  _links: links,
+};
+
+let githubApiResponseToString =
+    (
+      {
+        name,
+        path,
+        sha,
+        size,
+        url,
+        html_url,
+        git_url,
+        download_url,
+        type_,
+        content,
+        encoding,
+        _links: {self, git, html},
+      },
+    ) => {j|
+  name:         $name
+  path:         $path
+  sha:          $sha
+  size:         $size
+  url:          $url
+  html_url:     $html_url
+  git_url:      $git_url
+  download_url: $download_url
+  type:         $type_
+  content:      $content
+  encoding:     $encoding
+  ----links----
+    self: $self
+    git:  $git
+    html: $html
+|j};
+
+let linksMake = (self, git, html) => {self, git, html};
+
+let githubApiMake =
+    (
+      name,
+      path,
+      sha,
+      size,
+      url,
+      html_url,
+      git_url,
+      download_url,
+      type_,
+      content,
+      encoding,
+      _links,
+    ) => {
+  name,
+  path,
+  sha,
+  size,
+  url,
+  html_url,
+  git_url,
+  download_url,
+  type_,
+  content,
+  encoding,
+  _links,
+};
+
+let decodeLinks = (json): result(links, Decode_ParseError.failure) =>
+  Decode.AsResult.OfParseError.Pipeline.(
+    succeed(linksMake)
+    |> field("self", string)
+    |> field("git", string)
+    |> field("html", string)
+    |> run(json)
+  );
+
+let decodeTest = json =>
+  Decode.AsResult.OfParseError.Pipeline.(
+    succeed(githubApiMake)
+    |> field("name", string)
+    |> field("path", string)
+    |> field("sha", string)
+    |> field("size", intFromNumber)
+    |> field("url", string)
+    |> field("html_url", string)
+    |> field("git_url", string)
+    |> field("download_url", string)
+    |> field("type", string)
+    |> field("content", string)
+    |> field("encoding", string)
+    |> field("_links", decodeLinks)
+    |> run(json)
+  );
+
 module App = {
   let getValue = e => e->ReactEvent.Form.target##value;
 
   let parseAndSet = (setter, event) =>
     event |> getValue |> parse |> sanitize |> (x => setter(_ => x));
 
+  let foldUnitResults = Result.fold(() => (), () => ());
+
   let fetch = (setter, uri, _event) =>
     ContentFetch.fetchString(uri)
-    |> IO.unsafeRunAsync(
-         fun
-         | Ok(content) => setter(_ => content)
-         | Error(error) => setter(_ => error |> ContentFetch.Error.show),
-       );
+    |> IO.map(content => setter(_ => content))
+    |> IO.mapError(error => setter(_ => error |> ContentFetch.Error.show))
+    |> IO.unsafeRunAsync(foldUnitResults);
+
+  let doSpecificFetch = (specificFetch, setSpecificFetchResult, _event) =>
+    specificFetch
+    |> makeUri
+    |> ContentFetch.fetchString
+    |> IO.map(
+         Js.Json.parseExn
+         >> decodeTest
+         >> Result.fold(
+              err =>
+                setSpecificFetchResult(_ =>
+                  err |> Decode.ParseError.failureToDebugString
+                ),
+              githubApiResponseToString
+              >> (x => setSpecificFetchResult(_ => x)),
+            ),
+       )
+    |> IO.mapError(error =>
+         setSpecificFetchResult(_ => error |> ContentFetch.Error.show)
+       )
+    |> IO.unsafeRunAsync(foldUnitResults);
 
   [@react.component]
   let make = () => {
@@ -86,16 +220,13 @@ module App = {
         onChange={getValue >> setSpecificFetch}
         className=Styles.wideTextInput
       />
-      <br />
-      <textarea className=Styles.wideTextArea />
       <input
         type_="button"
         value="go forth and fetch the thing"
-        onClick={specificFetch |> makeUri |> fetch(setSpecificFetchResult)}
+        onClick={doSpecificFetch(specificFetch, setSpecificFetchResult)}
       />
       <br />
-      <S> specificFetchResult </S>
-      // <input type_="button" value="fetch & parse" onClick={}
+      <pre> <S> specificFetchResult </S> </pre>
       <br />
       <hr />
       <br />
