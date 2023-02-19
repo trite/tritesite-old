@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "bundle": "webpack --mode production --entry ./_build/default/src/ReactApp.bs.js",
-    "serve": "webpack serve --open --mode development --entry ./_build/default/src/ReactApp.bs.js"
+    "bundle": "webpack --mode production --entry ./_build/default/src/Blog.bs.js",
+    "serve": "webpack serve --open --mode development --entry ./_build/default/src/Blog.bs.js",
+    "serve:sandbox": "webpack serve --open --mode development --entry ./_build/default/src/Sandbox.bs.js"
   },
   "dependencies": {
     "bs-bastet": "^2.0.0",
@@ -11,11 +12,11 @@
     "bs-fetch": "^0.6.2",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "relude": "^0.66.1",
     "relude-fetch": "trite/relude-fetch#update-for-melange",
-    "@rescript/react": "^0.10.3"
+    "reason-react": "^0.10.0"
   },
   "devDependencies": {
     "webpack": "^5.73.0",

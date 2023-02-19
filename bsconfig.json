@@ -24,7 +24,7 @@
     "bs-fetch",
     "relude",
     "relude-fetch",
-    "@rescript/react"
+    "reason-react"
   ],
   "bsc-flags": [
     "-open Relude.Globals",
