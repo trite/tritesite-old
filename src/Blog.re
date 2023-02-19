@@ -35,8 +35,6 @@ module Styles = {
   let wideTextArea = style([width(pct(50.0)), height(px(150))]);
 };
 
-// let url =
-
 module App = {
   open GithubApi;
 
@@ -76,51 +74,59 @@ module App = {
 
   [@react.component]
   let make = () => {
-    let (parsedMarkdown, setParsedMarkdown) = React.useState(() => "");
-
-    let (fetched, setFetched) = React.useState(() => "");
-
-    let (specificFetch, setSpecificFetch) =
-      React.useState(() => "posts/2022/2022-01-18_python-type-checking.md");
-
-    let (specificFetchResult, setSpecificFetchResult) =
-      React.useState(() => "");
-
-    <div> <span> <S> "blah" </S> </span> </div>;
-    // <label> <S> "Markdown parse test: " </S> </label>
-    // <textarea
-    //   onChange={parseAndSet(setParsedMarkdown)}
-    //   className=Styles.wideTextArea
-    // />
-    // <br />
-    // <div dangerouslySetInnerHTML={"__html": parsedMarkdown} />
-    // <br />
-    // <hr />
-    // <br />
-    // <label> <S> "Specific fetch test: " </S> </label>
-    // <input
-    //   type_="text"
-    //   value=specificFetch
-    //   onChange={getValue >> setSpecificFetch}
-    //   className=Styles.wideTextInput
-    // />
-    // <input
-    //   type_="button"
-    //   value="go forth and fetch the thing"
-    //   onClick={doSpecificFetch(specificFetch, setSpecificFetchResult)}
-    // />
-    // <br />
-    // <pre> <S> specificFetchResult </S> </pre>
-    // <br />
-    // <hr />
-    // <br />
-    // <label> <S> "Fetch test: " </S> </label>
-    // <textarea value=fetched className=Styles.wideTextArea />
-    // <input
-    //   type_="button"
-    //   value="dooo it"
-    //   onClick={fetch(setFetched, contentRoot)}
-    // />
+    <div>
+       <hr /> <br /> <span> <S> "some text and stuff" </S> </span> </div>;
+      // <label> <S> "Markdown parse test: " </S> </label>
+      // <textarea
+      //   onChange={parseAndSet(setParsedMarkdown)}
+      //   className=Styles.wideTextArea
+      // />
+      // <br />
+      // <div dangerouslySetInnerHTML={"__html": parsedMarkdown} />
+      // <br />
+      // <hr />
+      // <br />
+      // <label> <S> "Specific fetch test: " </S> </label>
+      // <input
+      //   type_="text"
+      //   value=specificFetch
+      //   onChange={getValue >> setSpecificFetch}
+      //   className=Styles.wideTextInput
+      // />
+      // <input
+      //   type_="button"
+      //   value="go forth and fetch the thing"
+      //   onClick={doSpecificFetch(specificFetch, setSpecificFetchResult)}
+      // />
+      // <br />
+      // <pre> <S> specificFetchResult </S> </pre>
+      // <br />
+      // <hr />
+      // <br />
+      // <label> <S> "Fetch test: " </S> </label>
+      // <textarea value=fetched className=Styles.wideTextArea />
+      // <input
+      //   type_="button"
+      //   value="dooo it"
+      //   onClick={fetch(setFetched, contentRoot)}
+      // />
+      //   React.useState(() => "");
+      // let (specificFetchResult, setSpecificFetchResult) =
+      //   React.useState(() => "posts/2022/2022-01-18_python-type-checking.md");
+      // let (specificFetch, setSpecificFetch) =
+      // let (fetched, setFetched) = React.useState(() => "");
+      // let (parsedMarkdown, setParsedMarkdown) = React.useState(() => "");
+      // <br />
+      // <span> <S> {url.path |> List.String.joinWith(", ")} </S> </span>
+      // <br />
+      // <hr />
+      // <br />
+      // <span> <S> urlDetails </S> </span>
+      //     setUrlDetails(_ => url.path |> List.String.joinWith(", "));
+      //   ReasonReactRouter.watchUrl(url =>
+      // let _watcherId =
+      // let (urlDetails, setUrlDetails) = React.useState(() => "");
+      // let url = ReasonReactRouter.useUrl();
   };
 };
 
