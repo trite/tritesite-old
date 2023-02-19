@@ -9,9 +9,11 @@ var Relude_IO = require("relude/./src/Relude_IO.bs.js");
 var Dompurify = require("dompurify");
 var ReactDom = require("react-dom");
 var ReludeFetch = require("relude-fetch/./src/ReludeFetch.bs.js");
+var Relude_List = require("relude/./src/Relude_List.bs.js");
 var Relude_Result = require("relude/./src/Relude_Result.bs.js");
 var Relude_Globals = require("relude/./src/Relude_Globals.bs.js");
 var Decode_ParseError = require("bs-decode/./src/Decode_ParseError.bs.js");
+var ReasonReactRouter = require("reason-react/./src/ReasonReactRouter.bs.js");
 var ReludeFetch_Error = require("relude-fetch/./src/ReludeFetch_Error.bs.js");
 var GithubApi$Tritesite = require("./GithubApi.bs.js");
 var ReludeFetch_Response = require("relude-fetch/./src/ReludeFetch_Response.bs.js");
@@ -135,7 +137,10 @@ function doSpecificFetch(specificFetch, setSpecificFetchResult, _event) {
 }
 
 function Blog$App(Props) {
-  return React.createElement("div", undefined, React.createElement("hr", undefined), React.createElement("br", undefined), React.createElement("span", undefined, React.createElement(Blog$S, {
+  var url = ReasonReactRouter.useUrl(undefined, undefined);
+  return React.createElement("div", undefined, React.createElement("span", undefined, React.createElement(Blog$S, {
+                      children: Curry._2(Relude_List.$$String.joinWith, ", ", url.path)
+                    })), React.createElement("br", undefined), React.createElement("hr", undefined), React.createElement("br", undefined), React.createElement("span", undefined, React.createElement(Blog$S, {
                       children: "some text and stuff"
                     })));
 }
