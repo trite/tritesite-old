@@ -1,5 +1,11 @@
 module.exports = {
+  entry: "./_build/default/src/Blog.bs.js",
+  output: {
+    publicPath: "/",
+  },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: "index.html"
+    }
   },
 };
