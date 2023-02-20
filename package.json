@@ -16,7 +16,7 @@
     "react-dom": "^16.8.1",
     "relude": "^0.66.1",
     "relude-fetch": "trite/relude-fetch#update-for-melange",
-    "reason-react": "^0.10.0"
+    "reason-react": "trite/reason-react#in-source-false"
   },
   "devDependencies": {
     "webpack": "^5.73.0",

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "namespace": true,
   "package-specs": {
-    "in-source": true,
+    "in-source": false,
     "module": "commonjs"
   },
   "reason": {
