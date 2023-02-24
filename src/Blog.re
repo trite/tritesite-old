@@ -1,31 +1,10 @@
-[@bs.module "marked"] external parse: string => string = "parse";
+[@bs.module "marked"] external parse: string => string = "parsefoo";
 
 [@bs.module "dompurify"] external sanitize: string => string = "sanitize";
 
 let contentRoot = "https://api.github.com/repos/trite/trite.io-content/contents/";
 
 let makeUri = path => contentRoot ++ path;
-
-module ContentFetch = {
-  module Error = {
-    type t = ReludeFetch.Error.t(string);
-    let show = error => ReludeFetch.Error.show(a => a, error);
-    module Type = {
-      type nonrec t = t;
-    };
-  };
-
-  module IOE = IO.WithError(Error.Type);
-  open IOE.Infix;
-
-  let fetchString = uri =>
-    ReludeFetch.fetch(uri) >>= ReludeFetch.Response.text;
-};
-
-module S = {
-  [@react.component]
-  let make = (~children) => children |> React.string;
-};
 
 module Styles = {
   open Css;
@@ -74,6 +53,7 @@ module App = {
 
   [@react.component]
   let make = () => {
+    module S = Components.S;
     let url = ReasonReactRouter.useUrl();
 
     <div>
