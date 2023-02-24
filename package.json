@@ -11,6 +11,7 @@
     "bs-decode": "trite/bs-decode#version-bumps-melange",
     "bs-fetch": "^0.6.2",
     "dompurify": "^2.4.3",
+    "gentype": "@melange-re/genType",
     "marked": "^4.2.12",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
