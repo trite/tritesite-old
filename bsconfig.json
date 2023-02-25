@@ -32,11 +32,22 @@
     "-bs-super-errors"
   ],
   "gentypeconfig": {
-    "language": "untyped",
-    "shims": {},
+    "language": "flow",
+    "module": "commonjs",
+    "importPath": "relative",
+    "reasonReactPath": "reason-react/src/ReasonReact.js",
+    "shims": {
+      "Js": "Js",
+      "Obj": "Obj",
+      "React": "ReactShim",
+      "ReactEvent": "ReactEvent",
+      "ReasonPervasives": "ReasonPervasives",
+      "ReasonReact": "ReactShim"
+    },
     "debug": {
-      "all": false,
-      "basic": false
-    }
+      "all": false
+    },
+    "exportInterfaces": false,
+    "path": "../../_build/default/src/GenType.exe"
   }
 }
