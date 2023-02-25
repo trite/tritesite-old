@@ -30,5 +30,13 @@
   "bsc-flags": [
     "-open Relude.Globals",
     "-bs-super-errors"
-  ]
+  ],
+  "gentypeconfig": {
+    "language": "untyped",
+    "shims": {},
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  }
 }
