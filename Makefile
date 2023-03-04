@@ -34,6 +34,10 @@ build: ## Build the project
 serve: ## Serve the application with a local HTTP server
 	npm run serve
 
+.PHONY: sandbox
+sandbox: ## Serve the sandbox app with a local HTTP server
+	npm run serve:sandbox
+
 .PHONY: bundle
 bundle: ## Bundle the JavaScript application
 	npm run bundle
