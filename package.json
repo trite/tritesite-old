@@ -2,7 +2,7 @@
   "scripts": {
     "bundle": "webpack --mode production",
     "serve": "webpack serve --open --mode development",
-    "serve:sandbox": "webpack serve --open --mode development --entry ./_build/default/src/Sandbox.bs.js"
+    "serve:sandbox": "webpack serve --open --mode development --entry ./_build/default/src/Sandbox/SandboxPage.bs.js"
   },
   "dependencies": {
     "bs-bastet": "^2.0.0",
@@ -11,7 +11,6 @@
     "bs-decode": "trite/bs-decode#version-bumps-melange",
     "bs-fetch": "^0.6.2",
     "dompurify": "^2.4.3",
-    "gentype": "@melange-re/genType",
     "marked": "^4.2.12",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
