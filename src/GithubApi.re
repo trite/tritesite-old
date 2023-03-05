@@ -20,7 +20,7 @@ type githubApiResponse = {
   _links: links,
 };
 
-let githubApiResponseToString =
+let responseToString =
     (
       {
         name,
@@ -97,7 +97,7 @@ let decodeLinks = (json): result(links, Decode_ParseError.failure) =>
     |> run(json)
   );
 
-let decodeTest = json =>
+let decode = json =>
   Decode.AsResult.OfParseError.Pipeline.(
     succeed(githubApiMake)
     |> field("name", string)

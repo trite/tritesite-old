@@ -39,8 +39,6 @@ module Styles = {
 };
 
 module App = {
-  open GithubApi;
-
   let getValue = e => e->ReactEvent.Form.target##value;
 
   let parseAndSet = (setter, event) =>
@@ -60,13 +58,13 @@ module App = {
     |> ContentFetch.fetchString
     |> IO.map(
          Js.Json.parseExn
-         >> decodeTest
+         >> GithubApi.decode
          >> Result.fold(
               err =>
                 setSpecificFetchResult(_ =>
                   err |> Decode.ParseError.failureToDebugString
                 ),
-              githubApiResponseToString
+              GithubApi.responseToString
               >> (x => setSpecificFetchResult(_ => x)),
             ),
        )
@@ -120,12 +118,14 @@ module App = {
       <br />
       <label> <S> "Fetch test: " </S> </label>
       // <textarea value=fetched className=Styles.wideTextArea />
-      <span value=fetched />
+      // <span value=fetched />
       <input
         type_="button"
-        value="dooo it"
+        value="doooooo it"
         onClick={fetch(setFetched, contentRoot)}
       />
+      <br />
+      <S> fetched </S>
       <br />
       <hr />
       <br />
