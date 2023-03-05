@@ -1,3 +1,8 @@
+/*
+   TODO:
+     * Error handling for invalid posts
+ */
+
 open Bindings;
 
 let contentRoot = "https://api.github.com/repos/trite/trite.io-content/contents/";
@@ -18,14 +23,6 @@ let makeUri = path => contentRoot ++ path;
 
 let makePostsUri = (~folder, path) =>
   postsContentRoot ++ folder +/ path ++ ".md";
-
-module Styles = {
-  open Css;
-
-  let wideTextInput = style([width(pct(50.0))]);
-
-  let wideTextArea = style([width(pct(50.0)), height(px(150))]);
-};
 
 let getValue = e => e->ReactEvent.Form.target##value;
 

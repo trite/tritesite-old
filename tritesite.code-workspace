@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../trite.io-content"
+		}
+	],
+  "settings": {
+    "ocaml.sandbox": {
+      "kind": "custom",
+      "template": "opam exec --switch=${workspaceFolder:tritesite} --set-switch -- $prog $args --fallback-read-dot-merlin"
+    }
+  }
+}
