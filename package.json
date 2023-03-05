@@ -1,7 +1,7 @@
 {
   "scripts": {
     "bundle": "webpack --mode production",
-    "serve": "webpack serve --open --mode development",
+    "serve": "webpack serve --open --mode development --entry ./_build/default/src/Router.bs.js",
     "serve:sandbox": "webpack serve --open --mode development --entry ./_build/default/src/Sandbox/SandboxPage.bs.js"
   },
   "dependencies": {
