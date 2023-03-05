@@ -3,8 +3,6 @@
      * Error handling for invalid posts
  */
 
-open Bindings;
-
 let contentRoot = "https://api.github.com/repos/trite/trite.io-content/contents/";
 
 let postsContentRoot = contentRoot ++ "posts/";
@@ -26,16 +24,7 @@ let makePostsUri = (~folder, path) =>
 
 let getValue = e => e->ReactEvent.Form.target##value;
 
-let parseAndSet = (setter, event) =>
-  event |> getValue |> parse |> sanitize |> (x => setter(_ => x));
-
 let foldUnitResults = Result.fold(() => (), () => ());
-
-let fetch = (setter, uri, _event) =>
-  ContentFetch.fetchString(uri)
-  |> IO.map(content => setter(_ => content))
-  |> IO.mapError(error => setter(_ => error |> ContentFetch.Error.show))
-  |> IO.unsafeRunAsync(foldUnitResults);
 
 [@react.component]
 let make = (~folder, ~post) => {
