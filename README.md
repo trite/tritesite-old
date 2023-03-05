@@ -1,5 +1,14 @@
 # tritesite
 
+Opening workspace with site code and content together:
+```
+code ./tritesite.code-workspace
+```
+
+
+
+
+# melange-opam-template details
 A simple project template using [Melange](https://github.com/melange-re/melange)
 with [opam](https://opam.ocaml.org/).
 
