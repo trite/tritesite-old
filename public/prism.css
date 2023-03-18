@@ -1,17 +1,20 @@
-/* PrismJS 1.29.0
-https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+fsharp+haskell+ocaml+python+reason */
+/*
+  Modified from: 
+    PrismJS 1.29.0
+    https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+fsharp+haskell+ocaml+python+reason
+*/
 code[class*=language-],
 pre[class*=language-] {
   color: #ccc;
   background: 0 0;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: FiraCode;
   font-size: 1em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  line-height: 1.5;
+  line-height: 1.25;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;

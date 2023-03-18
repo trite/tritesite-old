@@ -38,12 +38,32 @@ module Styles = {
   open Css;
 
   global("html", [boxSizing(borderBox)]);
+  global(
+    "body",
+    [
+      backgroundColor(hex("242424")),
+      color(hex("ddd")),
+      fontFamily(`custom("Inter")),
+      fontSize(em(1.0)),
+      lineHeight(`em(1.25)),
+      margin(zero),
+      padding(zero),
+    ],
+  );
+  global("a:link", [color(yellow)]);
+  global("a:visited", [color(green)]);
+  global("a:hover", [color(orange)]);
+  global("a:active", [color(white)]);
+
+  let container = style([position(relative), display(grid)]);
 };
 
 module App = {
   [@react.component]
   let make = () => {
-    ReasonReactRouter.useUrl().path |> handleRoutes;
+    <div className=Styles.container>
+      {ReasonReactRouter.useUrl().path |> handleRoutes}
+    </div>;
   };
 };
 

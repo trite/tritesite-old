@@ -3,6 +3,8 @@
      * Error handling for invalid posts
  */
 
+// Prism.js normally highlights on page render
+// In order to get it to highlight dynamically loaded content it needs to be called
 [@bs.module "prismjs"] external highlightAll: unit => unit = "highlightAll";
 
 // TODO: This is probably not the most efficient way to load things
@@ -51,8 +53,6 @@ module Styles = {
 let make = (~folder, ~post) => {
   module S = Components.S;
 
-  // loadLanguages(["reason"]);
-
   let (postContent, setPostContent) = React.useState(() => "");
 
   post
@@ -79,13 +79,9 @@ let make = (~folder, ~post) => {
      )
   |> IO.unsafeRunAsync(Result.fold(() => highlightAll(), () => ()));
 
-  // highlightAll();
-
-  <div className=Styles.container>
-    <div className=Styles.centeredElement>
-      <S> {"Fetching: " ++ (post |> makePostsUri(~folder))} </S>
-      <br />
-      <div dangerouslySetInnerHTML={"__html": postContent} />
-    </div>
+  <div className=Styles.centeredElement>
+    <S> {"Fetching: " ++ (post |> makePostsUri(~folder))} </S>
+    <br />
+    <div dangerouslySetInnerHTML={"__html": postContent} />
   </div>;
 };
