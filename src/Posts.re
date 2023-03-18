@@ -3,17 +3,11 @@
      * Error handling for invalid posts
  */
 
-// %raw
-// "import Prism from 'prismjs';";
-
 [@bs.module "prismjs"] external highlightAll: unit => unit = "highlightAll";
-// [@bs.module "prismjs/components/"] /*[@bs.scope "components"]*/
-// external loadLanguages: list(string) => unit = "loadLanguages";
 
-// %raw
-// "import Prism from 'prismjs';";
-// %raw
-// "import \"prismjs/components/prism-reason\";";
+// TODO: This is probably not the most efficient way to load things
+//       Wonder how hard it would be to move these calls to only happen when a particular language is detected?
+//       Is there a better way than raw js calls?
 %raw
 "require('prismjs/components/prism-reason');";
 %raw
