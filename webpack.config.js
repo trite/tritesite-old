@@ -8,4 +8,10 @@ module.exports = {
       index: "index.html"
     }
   },
+  // plugins: [
+  //   new MiniCssExtractPlugin({
+  //     filename: PROD ? "[name]-[contenthash].css" : "[name].css",
+  //     chunkFilename: PROD ? "[name]-[contenthash].css" : "[name].css"
+  //   })
+  // ]
 };

@@ -1,3 +1,8 @@
+// %raw
+// "import Prism from 'prismjs';";
+// %raw
+// "import \"prismjs/components/prism-reason\";";
+
 let handleRoutes = urlPath => {
   module S = Components.S;
 
@@ -27,6 +32,12 @@ let handleRoutes = urlPath => {
       <S> {"[" ++ (urlPath |> List.String.joinWith(", ")) ++ "]"} </S>
     </div>
   };
+};
+
+module Styles = {
+  open Css;
+
+  global("html", [boxSizing(borderBox)]);
 };
 
 module App = {

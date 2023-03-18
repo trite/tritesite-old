@@ -12,6 +12,7 @@
     "bs-fetch": "^0.6.2",
     "dompurify": "^2.4.3",
     "marked": "^4.2.12",
+    "prismjs": "^1.29.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "relude": "^0.66.1",
