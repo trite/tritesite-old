@@ -45,7 +45,7 @@ module Styles = {
       color(hex("ddd")),
       fontFamily(`custom("Inter")),
       fontSize(em(1.0)),
-      lineHeight(`em(1.25)),
+      lineHeight(`em(1.5)),
       margin(zero),
       padding(zero),
     ],

@@ -17,6 +17,9 @@
 %raw
 "require('prismjs/components/prism-gdscript');";
 
+%raw
+"require('prismjs/plugins/line-numbers/prism-line-numbers');";
+
 let contentRoot = "https://api.github.com/repos/trite/trite.io-content/contents/";
 
 let postsContentRoot = contentRoot ++ "posts/";
@@ -55,6 +58,8 @@ let make = (~folder, ~post) => {
 
   let (postContent, setPostContent) = React.useState(() => "");
 
+  let (testData, setTestData) = React.useState(() => "");
+
   post
   |> makePostsUri(~folder)
   |> ContentFetch.fetchString
@@ -66,21 +71,26 @@ let make = (~folder, ~post) => {
               setPostContent(_ =>
                 err |> Decode.ParseError.failureToDebugString
               ),
-            ({content_decoded, _}: GithubApi.githubApiResponse) => {
-              setPostContent(_ =>
-                content_decoded |> Bindings.parse |> Bindings.sanitize
-              );
-              highlightAll();
-            },
+            ({content_decoded, _}: GithubApi.githubApiResponse) =>
+              Parsing.(
+                {
+                  let {meta, data} = content_decoded |> parseContent;
+                  setPostContent(_ => data);
+                  highlightAll();
+                  setTestData(_ => meta);
+                }
+              ),
           ),
      )
   |> IO.mapError(error =>
        setPostContent(_ => error |> ContentFetch.Error.show)
      )
-  |> IO.unsafeRunAsync(Result.fold(() => highlightAll(), () => ()));
+  |> IO.unsafeRunAsync(foldUnitResults);
 
   <div className=Styles.centeredElement>
     <S> {"Fetching: " ++ (post |> makePostsUri(~folder))} </S>
+    <br />
+    <textarea value=testData />
     <br />
     <div dangerouslySetInnerHTML={"__html": postContent} />
   </div>;
