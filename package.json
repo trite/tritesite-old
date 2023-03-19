@@ -11,6 +11,7 @@
     "bs-decode": "trite/bs-decode#version-bumps-melange",
     "bs-fetch": "^0.6.2",
     "dompurify": "^2.4.3",
+    "js-yaml": "^4.1.0",
     "marked": "^4.2.12",
     "prismjs": "^1.29.0",
     "react": "^16.8.1",

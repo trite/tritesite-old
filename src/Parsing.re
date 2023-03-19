@@ -14,7 +14,7 @@ let parseContent = rawInput =>
     fun
     | [] => {meta: "", data: rawInput}
     | [_]
-    | [_, _] => {meta: "", data: "Not sure what to do here yet"}
+    | [_, _] => failwith("Figure this scenario out later")
     | ["", meta, data] => {meta, data}
     | ["", meta, ...data] => {
         meta,
