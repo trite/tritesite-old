@@ -43,6 +43,8 @@ let getValue = e => (e |> ReactEvent.Form.target)##value;
 
 let foldUnitResults = Result.fold(() => (), () => ());
 
+let const = (x, _) => x;
+
 module Styles = {
   open Css;
 
@@ -77,17 +79,17 @@ let make = (~folder, ~post) => {
               let {meta: {title, created}, data}: Parsing.parsedContent =
                 content_decoded |> Parsing.parseContent;
 
-              setPostContent(_ => data);
+              data |> const |> setPostContent;
 
               highlightAll();
 
-              setTitle(_ => title);
+              title |> const |> setTitle;
 
-              setCreated(_ =>
-                created
-                |> Option.map(Js.Date.toLocaleDateString)
-                |> Option.getOrElse("Unknown")
-              );
+              created
+              |> Option.map(Js.Date.toLocaleDateString)
+              |> Option.getOrElse("Unknown")
+              |> const
+              |> setCreated;
             },
           ),
      )
