@@ -81,14 +81,13 @@ let make = (~folder, ~post) => {
 
               highlightAll();
 
-              let created =
-                created
-                |> Option.map(Js.Date.toLocaleDateString)
-                |> Option.getOrElse("Unknown");
-
               setTitle(_ => title);
 
-              setCreated(_ => created);
+              setCreated(_ =>
+                created
+                |> Option.map(Js.Date.toLocaleDateString)
+                |> Option.getOrElse("Unknown")
+              );
             },
           ),
      )
