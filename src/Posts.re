@@ -7,7 +7,7 @@
 // In order to get it to highlight dynamically loaded content it needs to be called
 [@bs.module "prismjs"] external highlightAll: unit => unit = "highlightAll";
 
-[@bs.module "js-yaml"] external parseYaml: string => Js.t({..}) = "load";
+// [@bs.module "js-yaml"] external parseYaml: string => Js.t({..}) = "load";
 
 // TODO: This is probably not the most efficient way to load things
 //       Wonder how hard it would be to move these calls to only happen when a particular language is detected?
@@ -36,8 +36,6 @@ let (+/) = (left, right) =>
   | _ => left ++ right
   };
 
-let makeUri = path => contentRoot ++ path;
-
 let makePostsUri = (~folder, path) =>
   postsContentRoot ++ folder +/ path ++ ".md";
 
@@ -60,7 +58,9 @@ let make = (~folder, ~post) => {
 
   let (postContent, setPostContent) = React.useState(() => "");
 
-  let (testData, setTestData) = React.useState(() => "");
+  let (title, setTitle) = React.useState(() => "");
+
+  let (created, setCreated) = React.useState(() => "");
 
   post
   |> makePostsUri(~folder)
@@ -73,25 +73,23 @@ let make = (~folder, ~post) => {
               setPostContent(_ =>
                 err |> Decode.ParseError.failureToDebugString
               ),
-            ({content_decoded, _}: GithubApi.githubApiResponse) =>
-              Parsing.(
-                {
-                  let {meta, data} = content_decoded |> parseContent;
-                  let parsedMeta = meta |> parseYaml;
-                  let title =
-                    parsedMeta##title
-                    |> Js.toOption
-                    |> Option.getOrElse("No Title Provided");
-                  let created =
-                    parsedMeta##created
-                    |> Js.toOption
-                    |> Option.map(Js.Date.toLocaleDateString)
-                    |> Option.getOrElse("Unknown");
-                  setPostContent(_ => data);
-                  highlightAll();
-                  setTestData(_ => {j|Title: $title\nCreated: $created|j});
-                }
-              ),
+            ({content_decoded, _}: GithubApi.githubApiResponse) => {
+              let {meta: {title, created}, data}: Parsing.parsedContent =
+                content_decoded |> Parsing.parseContent;
+
+              setPostContent(_ => data);
+
+              highlightAll();
+
+              let created =
+                created
+                |> Option.map(Js.Date.toLocaleDateString)
+                |> Option.getOrElse("Unknown");
+
+              setTitle(_ => title);
+
+              setCreated(_ => created);
+            },
           ),
      )
   |> IO.mapError(error =>
@@ -100,9 +98,8 @@ let make = (~folder, ~post) => {
   |> IO.unsafeRunAsync(foldUnitResults);
 
   <div className=Styles.centeredElement>
-    <S> {"Fetching: " ++ (post |> makePostsUri(~folder))} </S>
-    <br />
-    <textarea value=testData />
+    <h1> {title |> React.string} </h1>
+    <S> {"Created: " ++ created} </S>
     <br />
     <div dangerouslySetInnerHTML={"__html": postContent} />
   </div>;
