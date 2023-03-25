@@ -1,0 +1,35 @@
+(melange.emit
+ (target output)
+ (alias react)
+ (libraries
+  melange
+  reason_react
+  bs_bastet
+  bs_css
+  bs_css_emotion
+  bs_decode
+  bs_fetch
+  relude
+  relude_fetch)
+ (modules
+  :standard
+  \
+  base64
+  components
+  contentFetch
+  githubApi
+  home
+  parsing
+  posts
+  router)
+ ; (modules :standard \ base64 components contentfetch githubapi home parsing posts router)
+ (preprocess
+  (pps reactjs-jsx-ppx))
+ (module_systems es6))
+
+(melange.emit
+ (target node)
+ (alias node)
+ ; (libraries sandbox)
+ ; (modules doublehash frontmatterregex sandboxpage)
+ (module_systems commonjs))

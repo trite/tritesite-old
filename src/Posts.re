@@ -1,13 +1,6 @@
-/*
-   TODO:
-     * Error handling for invalid posts
- */
-
 // Prism.js normally highlights on page render
 // In order to get it to highlight dynamically loaded content it needs to be called
 [@bs.module "prismjs"] external highlightAll: unit => unit = "highlightAll";
-
-// [@bs.module "js-yaml"] external parseYaml: string => Js.t({..}) = "load";
 
 // TODO: This is probably not the most efficient way to load things
 //       Wonder how hard it would be to move these calls to only happen when a particular language is detected?
