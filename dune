@@ -12,11 +12,12 @@
   relude-fetch
   reason-react)
  (vendored_dirs reason-react)
+ (data_only_dirs bs-bastet relude)
  (subdir
   bs-bastet/bastet/src
   (copy_files# ../../bastet_js/src/*.ml{,i})
   (library
-   (name bs_bastet)
+   (name bsBastet)
    (modes melange)
    (flags -w -67)))
  (subdir
@@ -37,6 +38,7 @@
  (subdir
   bs-fetch/src
   (library
+   (wrapped false)
    (name bs_fetch)
    (modes melange)))
  (subdir
@@ -45,14 +47,14 @@
   (library
    (name relude)
    (modes melange)
-   (libraries bs_bastet)))
+   (libraries bsBastet)))
  (subdir
   relude-fetch/src
   (include_subdirs unqualified)
   (library
-   (name relude_fetch)
+   (name reludeFetch)
    (modes melange)
-   (libraries relude bs_fetch)))
+   (libraries relude bs_fetch reason_react)))
  (subdir
   reason-react/src
   (include_subdirs unqualified)
