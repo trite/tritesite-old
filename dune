@@ -1,0 +1,69 @@
+(vendored_dirs node_modules)
+
+(subdir
+ node_modules
+ (dirs
+  bs-bastet
+  bs-css
+  bs-css-emotion
+  bs-decode
+  bs-fetch
+  relude
+  relude-fetch
+  reason-react)
+ (vendored_dirs reason-react)
+ (data_only_dirs bs-bastet relude)
+ (subdir
+  bs-bastet/bastet/src
+  (copy_files# ../../bastet_js/src/*.ml{,i})
+  (library
+   (name bsBastet)
+   (modes melange)
+   (flags -w -67)))
+ (subdir
+  bs-css/src
+  (library
+   (wrapped false)
+   (name bs_css)
+   (modes melange)))
+ (subdir
+  bs-css-emotion/src
+  (library
+   (wrapped false)
+   (name bs_css_emotion)
+   (modes melange)
+   (libraries bs_css)))
+ (subdir
+  bs-decode/src
+  (library
+   (wrapped false)
+   (name bs_decode)
+   (modes melange)
+   (libraries relude)))
+ (subdir
+  bs-fetch/src
+  (library
+   (wrapped false)
+   (name bs_fetch)
+   (modes melange)))
+ (subdir
+  relude/src
+  (include_subdirs unqualified)
+  (library
+   (name relude)
+   (modes melange)
+   (libraries bsBastet)))
+ (subdir
+  relude-fetch/src
+  (include_subdirs unqualified)
+  (library
+   (name reludeFetch)
+   (modes melange)
+   (libraries relude bs_fetch reason_react)))
+ (subdir
+  reason-react/src
+  (include_subdirs unqualified)
+  (library
+   (name reason_react)
+   (wrapped false)
+   (modes melange))))

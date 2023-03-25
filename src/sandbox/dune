@@ -1,0 +1,17 @@
+(melange.emit
+ (target output)
+ (alias sandbox)
+ (libraries
+  melange
+  reason_react
+  bsBastet
+  bs_css
+  bs_css_emotion
+  bs_decode
+  bs_fetch
+  relude
+  reludeFetch)
+ (preprocess
+  (pps reactjs-jsx-ppx))
+ (module_systems commonjs)
+ (compile_flags -open Relude.Globals))

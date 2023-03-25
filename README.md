@@ -5,6 +5,12 @@ Opening workspace with site code and content together:
 code ./tritesite.code-workspace
 ```
 
+# rescript-syntax
+This is necessary after `make init` for now:
+```
+opam pin add rescript-syntax.dev git+https://github.com/melange-re/melange.git
+opam pin add dune --dev-repo
+```
 
 
 

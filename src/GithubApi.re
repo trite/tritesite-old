@@ -88,7 +88,7 @@ let githubApiMake =
   _links,
 };
 
-let decodeLinks = (json): result(links, Decode_ParseError.failure) =>
+let decodeLinks = (json): result(links, Decode.ParseError.failure) =>
   Decode.AsResult.OfParseError.Pipeline.(
     succeed(linksMake)
     |> field("self", string)

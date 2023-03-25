@@ -1,0 +1,55 @@
+####{BSB GENERATED: NO EDIT
+FLG -open Tritesite
+FLG -ppx 'melc -as-ppx -bs-jsx 3'
+S /home/trite/git/tritesite/_opam/lib/melange
+B /home/trite/git/tritesite/_opam/lib/melange
+FLG -open Relude.Globals
+FLG -w +a-4-29-40-41-42-44-45-48-58-59-60-61-63..70-102
+S /home/trite/git/tritesite/.melange.eobjs/node_modules/bs-bastet
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/bs-bastet
+S /home/trite/git/tritesite/node_modules/bs-bastet/bastet_js/src
+B /home/trite/git/tritesite/_build/default/node_modules/bs-bastet/bastet_js/src
+S /home/trite/git/tritesite/node_modules/bs-bastet/bastet/src
+B /home/trite/git/tritesite/_build/default/node_modules/bs-bastet/bastet/src
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/bs-bastet
+S /home/trite/git/tritesite/node_modules/bs-css/src
+B /home/trite/git/tritesite/_build/default/node_modules/bs-css/src
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/bs-css
+S /home/trite/git/tritesite/node_modules/bs-css-emotion/src
+B /home/trite/git/tritesite/_build/default/node_modules/bs-css-emotion/src
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/bs-css-emotion
+S /home/trite/git/tritesite/node_modules/bs-decode/src
+B /home/trite/git/tritesite/_build/default/node_modules/bs-decode/src
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/bs-decode
+S /home/trite/git/tritesite/node_modules/bs-fetch/src
+B /home/trite/git/tritesite/_build/default/node_modules/bs-fetch/src
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/bs-fetch
+S /home/trite/git/tritesite/node_modules/relude/src
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src
+S /home/trite/git/tritesite/node_modules/relude/src/list
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src/list
+S /home/trite/git/tritesite/node_modules/relude/src/extensions
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src/extensions
+S /home/trite/git/tritesite/node_modules/relude/src/js
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src/js
+S /home/trite/git/tritesite/node_modules/relude/src/array
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src/array
+S /home/trite/git/tritesite/node_modules/relude/src/ior
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src/ior
+S /home/trite/git/tritesite/node_modules/relude/src/option
+B /home/trite/git/tritesite/_build/default/node_modules/relude/src/option
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/relude
+S /home/trite/git/tritesite/node_modules/relude-fetch/src
+B /home/trite/git/tritesite/_build/default/node_modules/relude-fetch/src
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/relude-fetch
+S /home/trite/git/tritesite/node_modules/reason-react/src
+B /home/trite/git/tritesite/_build/default/node_modules/reason-react/src
+S /home/trite/git/tritesite/node_modules/reason-react/src/legacy
+B /home/trite/git/tritesite/_build/default/node_modules/reason-react/src/legacy
+B /home/trite/git/tritesite/_build/default/.melange.eobjs/node_modules/reason-react
+S /home/trite/git/tritesite/./src
+B /home/trite/git/tritesite/_build/default/./src
+S /home/trite/git/tritesite/./src/sandbox
+B /home/trite/git/tritesite/_build/default/./src/sandbox
+B _build/default/.melange.eobjs
+####BSB GENERATED: NO EDIT}
