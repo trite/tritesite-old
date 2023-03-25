@@ -23,16 +23,20 @@
  (subdir
   bs-css/src
   (library
+   (wrapped false)
    (name bs_css)
    (modes melange)))
  (subdir
   bs-css-emotion/src
   (library
+   (wrapped false)
    (name bs_css_emotion)
-   (modes melange)))
+   (modes melange)
+   (libraries bs_css)))
  (subdir
   bs-decode/src
   (library
+   (wrapped false)
    (name bs_decode)
    (modes melange)
    (libraries relude)))

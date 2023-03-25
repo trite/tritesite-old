@@ -1,6 +1,6 @@
 (melange.emit
  (target output)
- (alias react)
+ (alias sandbox)
  (libraries
   melange
   reason_react
@@ -13,5 +13,5 @@
   reludeFetch)
  (preprocess
   (pps reactjs-jsx-ppx))
- (module_systems es6)
+ (module_systems commonjs)
  (compile_flags -open Relude.Globals))
