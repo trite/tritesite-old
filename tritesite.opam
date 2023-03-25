@@ -17,6 +17,7 @@ depends: [
   "dot-merlin-reader" {dev}
   "odoc" {with-doc}
   "ocamlformat-rpc" {dev}
+  "rescript-syntax" {dev}
 ]
 dev-repo: "git+https://github.com/your/project.git"
 pin-depends: [

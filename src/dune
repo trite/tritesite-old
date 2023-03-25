@@ -11,25 +11,12 @@
   bs_fetch
   relude
   reludeFetch)
- (modules
-  :standard
-  \
-  base64
-  components
-  contentFetch
-  githubApi
-  home
-  parsing
-  posts
-  router)
- ; (modules :standard \ base64 components contentfetch githubapi home parsing posts router)
+ ; (modules :standard)
  (preprocess
   (pps reactjs-jsx-ppx))
  (module_systems es6))
 
-(melange.emit
- (target node)
- (alias node)
- ; (libraries sandbox)
- ; (modules doublehash frontmatterregex sandboxpage)
- (module_systems commonjs))
+; (melange.emit
+;  (target node)
+;  (alias node)
+;  (module_systems commonjs))

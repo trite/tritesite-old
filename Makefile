@@ -28,11 +28,13 @@ install: ## Install development dependencies
 
 .PHONY: build
 build: ## Build the project
-	$(DUNE) build @react @node
+	$(DUNE) build @react
+##	$(DUNE) build @react @node
 
 .PHONY: build_verbose
 build_verbose: ## Build the project
-	$(DUNE) build --verbose @react @node
+	$(DUNE) build --verbose @react
+##$(DUNE) build --verbose @react @node
 
 .PHONY: serve
 serve: ## Serve the application with a local HTTP server

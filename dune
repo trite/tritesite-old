@@ -34,7 +34,8 @@
   bs-decode/src
   (library
    (name bs_decode)
-   (modes melange)))
+   (modes melange)
+   (libraries relude)))
  (subdir
   bs-fetch/src
   (library
