@@ -1,4 +1,5 @@
 .DS_Store
+.merlin
 node_modules
 _build
 _opam
