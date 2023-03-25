@@ -1,14 +1,13 @@
 (subdir
  node_modules
- (dirs
-  reason-react
-  bs-bastet
-  bs-css
-  bs-css-emotion
-  bs-decode
-  bs-fetch
-  relude
-  relude-fetch)
+ (dirs reason-react)
+ ; bs-bastet
+ ; bs-css
+ ; bs-css-emotion
+ ; bs-decode
+ ; bs-fetch
+ ; relude
+ ; relude-fetch)
  (vendored_dirs
   reason-react
   bs-bastet
