@@ -1,6 +1,6 @@
 {
   "ocaml.sandbox": {
-    "kind": "custom",
+    "kind": "opam",
     "switch": "${workspaceFolder:tritesite}"
   }
 }
