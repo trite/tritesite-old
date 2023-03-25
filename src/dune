@@ -10,7 +10,7 @@
   bs_decode
   bs_fetch
   relude
-  relude_fetch)
+  relude-fetch)
  (modules
   :standard
   \
