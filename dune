@@ -1,8 +1,58 @@
+(vendored_dirs node_modules)
+
 (subdir
  node_modules
- (dirs reason-react)
- (data_only_dirs bastet relude)
+ (dirs
+  bs-bastet
+  bs-css
+  bs-css-emotion
+  bs-decode
+  bs-fetch
+  relude
+  relude-fetch
+  reason-react)
  (vendored_dirs reason-react)
+ (subdir
+  bs-bastet/bastet/src
+  (copy_files# ../../bastet_js/src/*.ml{,i})
+  (library
+   (name bs_bastet)
+   (modes melange)
+   (flags -w -67)))
+ (subdir
+  bs-css/src
+  (library
+   (name bs_css)
+   (modes melange)))
+ (subdir
+  bs-css-emotion/src
+  (library
+   (name bs_css_emotion)
+   (modes melange)))
+ (subdir
+  bs-decode/src
+  (library
+   (name bs_decode)
+   (modes melange)))
+ (subdir
+  bs-fetch/src
+  (library
+   (name bs_fetch)
+   (modes melange)))
+ (subdir
+  relude/src
+  (include_subdirs unqualified)
+  (library
+   (name relude)
+   (modes melange)
+   (libraries bs_bastet)))
+ (subdir
+  relude-fetch/src
+  (include_subdirs unqualified)
+  (library
+   (name relude_fetch)
+   (modes melange)
+   (libraries relude bs_fetch)))
  (subdir
   reason-react/src
   (include_subdirs unqualified)
@@ -10,51 +60,3 @@
    (name reason_react)
    (wrapped false)
    (modes melange))))
-
-(subdir
- node_modules/bs-bastet/src
- (copy_files# ../../bastet_js/src/*.ml{,i})
- (library
-  (name bs_bastet)
-  (modes melange)
-  (flags -w -67)))
-
-(subdir
- node_modules/bs-css/src
- (library
-  (name bs_css)
-  (modes melange)))
-
-(subdir
- node_modules/bs-css-emotion/src
- (library
-  (name bs_css_emotion)
-  (modes melange)))
-
-(subdir
- node_modules/bs-decode/src
- (library
-  (name bs_decode)
-  (modes melange)))
-
-(subdir
- node_modules/bs-fetch/src
- (library
-  (name bs_fetch)
-  (modes melange)))
-
-(subdir
- node_modules/relude/src
- (include_subdirs unqualified)
- (library
-  (name relude)
-  (modes melange)
-  (libraries bs_bastet)))
-
-(subdir
- node_modules/relude-fetch/src
- (include_subdirs unqualified)
- (library
-  (name relude_fetch)
-  (modes melange)
-  (libraries relude bs_fetch)))
