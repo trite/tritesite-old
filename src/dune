@@ -4,11 +4,11 @@
  (libraries
   melange
   reason_react
-  bs_bastet
-  bs_css
-  bs_css_emotion
-  bs_decode
-  bs_fetch
+  bs-bastet
+  bs-css
+  bs-css-emotion
+  bs-decode
+  bs-fetch
   relude
   relude-fetch)
  (modules
