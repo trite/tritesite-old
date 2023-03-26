@@ -14,6 +14,7 @@ COPY . .
 
 RUN opam init --compiler=4.14.1
 # RUN make init
+# Doing these steps individually so they can be cached (especially the opam switch one)
 RUN opam switch create . 4.14.1 -y --deps-only
 RUN eval $(opam env)
 RUN npm install --legacy-peer-deps
