@@ -33,6 +33,14 @@ module Styles = {
   );
 
   let container = style([position(relative), display(grid)]);
+
+  let contentDiv =
+    style([
+      justifySelf(center),
+      position(absolute),
+      minWidth(em(40.0)),
+      maxWidth(em(60.0)),
+    ]);
 };
 
 let handleRoutes = urlPath => {
@@ -70,7 +78,9 @@ module App = {
   [@react.component]
   let make = () => {
     <div className=Styles.container>
-      {ReasonReactRouter.useUrl().path |> handleRoutes}
+      <div className=Styles.contentDiv>
+        {ReasonReactRouter.useUrl().path |> handleRoutes}
+      </div>
     </div>;
   };
 };

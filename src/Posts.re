@@ -91,10 +91,10 @@ let make = (~folder, ~post) => {
      )
   |> IO.unsafeRunAsync(foldUnitResults);
 
-  <div className=Styles.centeredElement>
+  <>
     <h1> {title |> React.string} </h1>
     <S> {"Created: " ++ created} </S>
     <br />
     <div dangerouslySetInnerHTML={"__html": postContent} />
-  </div>;
+  </>;
 };
