@@ -10,14 +10,24 @@ FROM ocaml/opam:alpine-3.17-ocaml-4.14
 # RUN sudo curl -fsSL https://deb.nodesource.com/setup_18.x | sudo bash - && \
 #   sudo apt-get install -y nodejs
 
-
 RUN sudo apk add --update nodejs npm
+RUN npm update -g
+# For bisect-ppx to build properly
+RUN sudo npm install -g esy
 
 WORKDIR /app
 COPY . .
-RUN opam init --compiler=4.14.0
-RUN make init
+
+RUN opam init --compiler=4.14.1
+# RUN make init
+RUN opam switch create . 4.14.1 -y --deps-only
+RUN eval $(opam env)
+RUN npm install --legacy-peer-deps
+RUN opam update
+RUN opam install -y . --deps-only
+RUN opam pin -y add tritesite.dev .
 RUN make build
+
 CMD ["make serve"]
 
 # CMD ["node", "--version"]
